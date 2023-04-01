@@ -20,7 +20,7 @@ public class StudentRecord {
     
     private static int studentCount; //class variabel
     
-        public StudentRecord()
+    public StudentRecord()
     {
         //area inisialisasi kode; 
         studentCount++;

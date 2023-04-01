@@ -58,8 +58,4 @@ public class Aritmatika1 {
         System.out.println();
         return 0;
     }
-
-    String isPrima(boolean n) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
