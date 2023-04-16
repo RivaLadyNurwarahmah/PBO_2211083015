@@ -4,11 +4,15 @@
  * and open the template in the editor.
  */
 package lady.model;
-
+import java.util.List;
 /**
  *
  * @author User
  */
-public class BukuDao {
-    
+public interface BukuDao {
+    void save(Buku buku);
+    void update(int index, Buku buku);
+    void delete(int index);
+    Buku getBuku(int index);
+    List<Buku> getAll();
 }

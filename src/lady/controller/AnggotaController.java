@@ -4,15 +4,13 @@
  * and open the template in the editor.
  */
 package lady.controller;
-
+import lady.view.FormAnggota;
+import lady.model.*;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author User
  */
-import lady.view.FormAnggota;
-import lady.model.*;
-import javax.swing.table.DefaultTableModel;
-
 public class AnggotaController {
     private FormAnggota formAnggota;
     private AnggotaDao anggotaDao;

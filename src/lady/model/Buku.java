@@ -14,19 +14,16 @@ public class Buku {
     private String judulbuku;
     private String pengarang;
     private String penerbit;
-    private int tahunterbit;
+    private String tahunterbit;
     
     public Buku(){
     }
     
-    public Buku(String kodebuku, String judulbuku, String pengarang, String penerbit){
+    public Buku(String kodebuku, String judulbuku, String pengarang, String penerbit, String tahunterbit){
         this.kodebuku = kodebuku;
         this.judulbuku = judulbuku;
         this.pengarang = pengarang;
         this.penerbit = penerbit;
-    }
-    
-    public Buku(int tahunterbit){
         this.tahunterbit = tahunterbit;
     }
     
@@ -62,10 +59,10 @@ public class Buku {
     }
     ////////////////////////////////////
     
-    public int gettahunTerbit(){
+    public String gettahunTerbit(){
         return tahunterbit;
     }
-    public void settahunTerbit(int tahunterbit){
+    public void settahunTerbit(String tahunterbit){
         this.tahunterbit = tahunterbit;
     }
     ////////////////////////////////////
