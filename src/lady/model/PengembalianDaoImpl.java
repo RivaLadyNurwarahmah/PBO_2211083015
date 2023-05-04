@@ -10,34 +10,32 @@ import java.util.ArrayList;
  *
  * @author User
  */
-public class PeminjamanDaoImpl implements PeminjamanDao {
-    List<Peminjaman> data = new ArrayList<>();
+public class PengembalianDaoImpl {
+    List<Pengembalian> data = new ArrayList<>();
     
-    public PeminjamanDaoImpl(){
-        AnggotaDao daoAnggota = new AnggotaDaoImpl();
-        BukuDao daoBuku = new BukuDaoImpl();
+    public PengembalianDaoImpl(){
+        PeminjamanDao daoPeminjaman = new PeminjamanDaoImpl();
         data.add(new Peminjaman(daoAnggota.getAnggota(0),daoBuku.getBuku(0),"1 Januari 2023","5 Januari 2023"));
         data.add(new Peminjaman(daoAnggota.getAnggota(0),daoBuku.getBuku(0),"4 Januari 2023","8 Januari 2023"));
-        data.add(new Peminjaman(daoAnggota.getAnggota(0),daoBuku.getBuku(0),"11 Januari 2023","15 Januari 2023"));
     }
     
-    public void save(Peminjaman peminjaman){
-        data.add(peminjaman);
+    public void save(Pengembalian pengembalian){
+        data.add(pengembalian);
     }
     
-    public void update(int index, Peminjaman peminjaman){
-        data.set(index, peminjaman);
+    public void update(int index, Pengembalian pengembalian){
+        data.set(index, pengembalian);
     }
     
     public void delete(int index){
         data.remove(index);
     }
     
-    public Peminjaman getPeminjaman(int index){
+    public Pengembalian getPengembalian(int index){
         return data.get(index);
     }
     
-    public List<Peminjaman> getAll(){
+    public List<Pengembalian> getAll(){
         return data;
     }
 }

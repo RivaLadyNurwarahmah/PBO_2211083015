@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package lady.controller;
-import lady.view.FormPeminjaman;
+import lady.view.FormPengembalian;
 import lady.model.*;
 import java.util.*;
 import javax.swing.table.DefaultTableModel;
@@ -12,19 +12,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author User
  */
-public class PeminjamanController {
-    private FormPeminjaman formPeminjaman;
+public class PengembalianController {
+    public class PeminjamanController {
+    private FormPengembalian formPengembalian;
+    private PengembalianDao pengembalianDao;
+    private Pengembalian pengembalian;
+    
     private PeminjamanDao peminjamanDao;
-    private Peminjaman peminjaman;
     
-    private AnggotaDao anggotaDao;
-    private BukuDao bukuDao;
-    
-    public PeminjamanController(FormPeminjaman formPeminjaman){
-        this.formPeminjaman = formPeminjaman;
-        peminjamanDao = new PeminjamanDaoImpl();
-        anggotaDao = new AnggotaDaoImpl();
-        bukuDao = new BukuDaoImpl();
+    public PengembalianController(FormPengembalian formPengembalian){
+        this.formPengembalian = formPengembalian;
+        pengembalianDao = new PengembalianDaoImpl();
+        peminjamanDao = new PengembalianDaoImpl();
     }
           
     public void bersihForm(){
@@ -102,4 +101,5 @@ public class PeminjamanController {
             tabelModel.addRow(data);
         }
     }
+}
 }
