@@ -34,7 +34,7 @@ public class DbHelper {
         try {
             connection = DbHelper.getConnection();
             AnggotaDao dao = new AnggotaDaoImpl(connection);
-            Anggota anggota = new Anggota("A002","Riva","Batusangkar","P");
+            Anggota anggota = new Anggota("A001","Risa","Bukittinggi","P");
             dao.insert(anggota);
             JOptionPane.showMessageDialog(null, "Entri data OK");
         }catch(Exception ex){
