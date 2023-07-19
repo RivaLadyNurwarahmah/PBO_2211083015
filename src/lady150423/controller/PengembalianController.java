@@ -48,7 +48,7 @@ public class PengembalianController {
     }
     
     public void savePeminjaman(){
-        peminjaman = new Peminjaman();
+        peminjaman = new Peminjamann();
         peminjaman .setAnggota(anggotaDao.getAnggota(formPeminjaman.getCboAnggota().getSelectedIndex()));
         peminjaman.setBuku(bukuDao.getBuku(formPeminjaman.getCboBuku().getSelectedIndex()));
         peminjaman.settglPinjam(formPeminjaman.getTxttglPinjam().getText());
@@ -90,8 +90,8 @@ public class PengembalianController {
         DefaultTableModel tabelModel = 
                 (DefaultTableModel) formPeminjaman.getTblPeminjaman().getModel();
         tabelModel.setRowCount(0);
-        java.util.List<Peminjaman> list = peminjamanDao.getAll();
-        for(Peminjaman peminjaman : list){
+        java.util.List<Peminjamann> list = peminjamanDao.getAll();
+        for(Peminjamann peminjaman : list){
             Object[] data = {
                 peminjaman.getAnggota(),
                 peminjaman.getBuku(),

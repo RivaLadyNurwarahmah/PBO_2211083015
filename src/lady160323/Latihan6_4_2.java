@@ -7,12 +7,11 @@ package lady160323;
 
 import java.util.Scanner;
 
-
 /**
  *
- * @author user
+ * @author User
  */
-public class Latihan6_4_1 {
+public class Latihan6_4_2 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("Masukkan angka: ");
@@ -21,10 +20,10 @@ public class Latihan6_4_1 {
         int pangkat = input.nextInt();
         int hasil = 1;
         int counter = 1;
-        while (counter <= pangkat) {
+        do {
             hasil *= angka;
             counter++;
-        }
+        } while (counter <= pangkat);
         System.out.println(angka + " pangkat " + pangkat + " adalah " + hasil);
     }
 }

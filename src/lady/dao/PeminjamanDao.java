@@ -14,8 +14,12 @@ import java.util.List;
  */
 public interface PeminjamanDao {
     void insert (Peminjaman peminjaman) throws Exception;
+    
     void update (Peminjaman peminjaman) throws Exception;
+    
     void delete (Peminjaman peminjaman) throws Exception;
-    Peminjaman getPeminjaman (String kodepeminjaman) throws Exception;
+    
+    Peminjaman getPeminjaman (String kodeanggota, String kodebuku, String tglpinjam) throws Exception;
+    
     List <Peminjaman> getAll() throws Exception;
 }
