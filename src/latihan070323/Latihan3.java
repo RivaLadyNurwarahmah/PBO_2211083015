@@ -9,6 +9,9 @@ package latihan070323;
  *
  * @author LABSIKOMP03
  */
+
+/*Latihan Modul 4.3 Dasar-dasar Pemrograman*/
+
 public class Latihan3 {
     public static void main(String[] args){
         int a = 10;
