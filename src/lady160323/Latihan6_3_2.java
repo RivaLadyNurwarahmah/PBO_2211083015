@@ -9,6 +9,10 @@ package lady160323;
  *
  * @author user
  */
+
+/*Latihan Modul 6.3.2 Struktur Kontrol*/
+/*Cetak Seratus Kali*/
+
 public class Latihan6_3_2 {
     public static void main(String[] args){
         int jml = 0;

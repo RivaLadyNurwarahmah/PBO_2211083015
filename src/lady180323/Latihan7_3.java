@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lady160323;
+package lady180323;
 
 /**
  *
  * @author User
  */
+
+/*Latihan Modul 7.3 Java Array*/
+/*Buku Alamat*/
+
 public class Latihan7_3 {
     public static void main(String[] args) {
         String[][] entry = {{"Florence", "735-1234", "Manila"},

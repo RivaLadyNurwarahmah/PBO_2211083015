@@ -11,6 +11,10 @@ import java.io.IOException;
  *
  * @author LABP1KOMP
  */
+
+/*Latihan Modul 6.2.2 Struktur Kontrol*/
+/*Membaca Bilangan*/
+
 public class Latihan6_2_2 {
     public static void main(String[] args){ 
         BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));

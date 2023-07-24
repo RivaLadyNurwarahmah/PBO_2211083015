@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lady160323;
+package lady180323;
 
 /**
  *
  * @author User
  */
+
+/*Latihan Modul 7.1.3 Java Array*/
+/*Hari dalam Seminggu*/
+
 public class Latihan7_1_3 {
     public static void main(String[] args){
         String days[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};

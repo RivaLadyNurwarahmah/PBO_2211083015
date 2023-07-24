@@ -11,6 +11,10 @@ import java.io.IOException;
  *
  * @author LABP1KOMP
  */
+
+/*Latihan Modul 6.1.1 Struktur Kontrol*/
+/*Nilai*/
+
 public class Latihan6_1_1{
     public static void main(String[] args) throws IOException {
         BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
@@ -26,8 +30,8 @@ public class Latihan6_1_1{
             System.out.print("Entri nilai 3 : ");
             nilai3 = Integer.parseInt(dataIn.readLine());
         
-            int rata2 = nilai1 + nilai2 + nilai3;
-            System.out.println("Rata-rata = " + nilai3);
+            int rata2 = (nilai1 + nilai2 + nilai3) / 3;
+            System.out.println("Rata-rata = " + rata2);
             
             if(rata2 >= 60)
                 System.out.println(":D");

@@ -11,6 +11,10 @@ import java.util.Scanner;
  *
  * @author User
  */
+
+/*Latihan Modul 6.4.2 Struktur Kontrol*/
+/*Perpangkatan*/
+
 public class Latihan6_4_2 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);

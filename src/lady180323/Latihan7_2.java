@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lady160323;
+package lady180323;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,6 +14,10 @@ import javax.swing.JOptionPane;
  *
  * @author User
  */
+
+/*Latihan Modul 7.2 Java Array*/
+/*Nomor Terbesar*/
+
 public class Latihan7_2 {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
