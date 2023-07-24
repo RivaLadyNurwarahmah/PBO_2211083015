@@ -10,31 +10,36 @@ import java.util.ArrayList;
  *
  * @author User
  */
-public class PengembalianDaoImpl {
+public class PengembalianDaoImpl implements PengembalianDao{
     List<Pengembalian> data = new ArrayList<>();
     
     public PengembalianDaoImpl(){
-        PeminjamanDao daoPeminjaman = new PeminjamanDaoImpl();
-        data.add(new Peminjaman(daoAnggota.getAnggota(0),daoBuku.getBuku(0),"1 Januari 2023","5 Januari 2023"));
-        data.add(new Peminjaman(daoAnggota.getAnggota(0),daoBuku.getBuku(0),"4 Januari 2023","8 Januari 2023"));
+        PeminjamanDaoImpl daoPeminjaman = new PeminjamanDaoImpl();
+        data.add(new Pengembalian(daoPeminjaman.getPeminjaman(0).gettglKembali(),"15/11/2023"));
+        data.add(new Pengembalian("",""));
     }
     
+    @Override
     public void save(Pengembalian pengembalian){
         data.add(pengembalian);
     }
     
+    @Override
     public void update(int index, Pengembalian pengembalian){
         data.set(index, pengembalian);
     }
     
+    @Override
     public void delete(int index){
         data.remove(index);
     }
     
+    @Override
     public Pengembalian getPengembalian(int index){
         return data.get(index);
     }
     
+    @Override
     public List<Pengembalian> getAll(){
         return data;
     }

@@ -13,6 +13,6 @@ public interface PengembalianDao {
     void save(Pengembalian pengembalian);
     void update(int index,Pengembalian pengembalian);
     void delete(int index);
-    Peminjaman getPengembalian(int index);
+    Pengembalian getPengembalian(int index);
     List<Pengembalian> getAll();
 }

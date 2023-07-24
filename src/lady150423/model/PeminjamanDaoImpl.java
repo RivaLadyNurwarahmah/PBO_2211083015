@@ -16,27 +16,31 @@ public class PeminjamanDaoImpl implements PeminjamanDao {
     public PeminjamanDaoImpl(){
         AnggotaDao daoAnggota = new AnggotaDaoImpl();
         BukuDao daoBuku = new BukuDaoImpl();
-        data.add(new Peminjaman(daoAnggota.getAnggota(0),daoBuku.getBuku(0),"1 Januari 2023","5 Januari 2023"));
-        data.add(new Peminjaman(daoAnggota.getAnggota(0),daoBuku.getBuku(0),"4 Januari 2023","8 Januari 2023"));
-        data.add(new Peminjaman(daoAnggota.getAnggota(0),daoBuku.getBuku(0),"11 Januari 2023","15 Januari 2023"));
+        data.add(new Peminjaman(daoAnggota.getAnggota(0),daoBuku.getBuku(0),"01/11/2023","05/11/2023"));
+        data.add(new Peminjaman(daoAnggota.getAnggota(0),daoBuku.getBuku(1),"11/11/2023","15/11/2023"));
     }
     
+    @Override
     public void save(Peminjaman peminjaman){
         data.add(peminjaman);
     }
     
+    @Override
     public void update(int index, Peminjaman peminjaman){
         data.set(index, peminjaman);
     }
     
+    @Override
     public void delete(int index){
         data.remove(index);
     }
     
+    @Override
     public Peminjaman getPeminjaman(int index){
         return data.get(index);
     }
     
+    @Override
     public List<Peminjaman> getAll(){
         return data;
     }

@@ -71,10 +71,8 @@ public class PeminjamanController {
     
     public void updatePeminjaman(){
         int index = formPeminjaman.getTblPeminjaman().getSelectedRow();
-        peminjaman.setAnggota(
-                anggotaDao.getAnggota(formPeminjaman.getCboAnggota().getSelectedIndex()));
-        peminjaman.setBuku(
-                bukuDao.getBuku(formPeminjaman.getCboBuku().getSelectedIndex()));
+        peminjaman.setAnggota(anggotaDao.getAnggota(formPeminjaman.getCboAnggota().getSelectedIndex()));
+        peminjaman.setBuku(bukuDao.getBuku(formPeminjaman.getCboBuku().getSelectedIndex()));
         peminjaman.settglPinjam(formPeminjaman.getTxttglPinjam().getText());
         peminjaman.settglKembali(formPeminjaman.getTxttglKembali().getText());
         peminjamanDao.update(index,peminjaman);
@@ -88,8 +86,7 @@ public class PeminjamanController {
     }
     
     public void tampilData(){
-        DefaultTableModel tabelModel = 
-                (DefaultTableModel) formPeminjaman.getTblPeminjaman().getModel();
+        DefaultTableModel tabelModel = (DefaultTableModel) formPeminjaman.getTblPeminjaman().getModel();
         tabelModel.setRowCount(0);
         java.util.List<Peminjaman> list = peminjamanDao.getAll();
         for(Peminjaman peminjaman : list){
