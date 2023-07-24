@@ -18,7 +18,7 @@ import lady.model.Peminjaman;
  * @author User
  */
 public class PengembalianDaoImpl implements PengembalianDao{
-    
+    private Pengembalian pengembalian;
     Connection connection;
     
     public PengembalianDaoImpl(Connection connection) {
@@ -125,5 +125,33 @@ public class PengembalianDaoImpl implements PengembalianDao{
             selisih = rs.getInt(1);
         }
         return selisih;
+    }
+    
+    @Override
+    public List<Pengembalian> cari(String kode, String cari) throws Exception {
+        String search = "SELECT anggota.kodeAnggota, anggota.namaAnggota, buku.kodeBuku,"
+                + "buku.judulBuku, peminjaman.tglpinjam, peminjaman.tglkembali,"
+                + "pengembalian.TglDikembalikan, pengembalian.terlambat, pengembalian.denda "
+                + "FROM peminjaman JOIN anggota ON peminjaman.kodeAnggota = anggota.kodeAnggota "
+                + "JOIN buku ON peminjaman.kodeBuku = buku.kodeBuku LEFT JOIN pengembalian "
+                + "ON (peminjaman.kodeAnggota = pengembalian.KodeAnggota AND peminjaman.kodeBuku = pengembalian.kodeBuku "
+                + "AND CAST(peminjaman.tglpinjam AS DATE) = CAST(pengembalian.tglpinjam AS DATE)) WHERE "+kode+" LIKE '%"+cari+"%'";
+        
+        PreparedStatement ps = connection.prepareStatement(search);
+        // ps.setString(1, kode);
+        // ps.setString(2, cari);
+        ResultSet rs = ps.executeQuery();
+        List<Pengembalian> data = new ArrayList<>();
+        while (rs.next()) {
+            pengembalian = new Pengembalian();
+            pengembalian.setKodeanggota(rs.getString(1));
+            pengembalian.setKodebuku(rs.getString(2));
+            pengembalian.setTglpinjam(rs.getString(3));
+            pengembalian.setTgldikembalikan(rs.getString(4));
+            pengembalian.setTerlambat(rs.getInt(5));
+            pengembalian.setDenda(rs.getDouble(6));
+            data.add(pengembalian);
+        }
+        return data;
     }
 }

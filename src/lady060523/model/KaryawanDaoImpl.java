@@ -15,9 +15,8 @@ public class KaryawanDaoImpl implements KaryawanDao{
     List<Karyawan> data = new ArrayList<>();
     
     public KaryawanDaoImpl(){
-        data.add(new Karyawan("1111","Ali", "Padang"));
-        data.add(new Karyawan("1112","Deni", "Padang Panjang"));
-        data.add(new Karyawan("1113","Ani", "Padang"));
+        data.add(new Karyawan("Aini","Yogyakarta","Y","001","2","OB",1));
+        data.add(new Karyawan("Afon","Jakarta","Y","002","1","Manager",1));
     }
     
     public void save(Karyawan karyawan){

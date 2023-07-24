@@ -15,18 +15,23 @@ import javax.swing.table.DefaultTableModel;
 import lady.db.DbHelper;
 import lady.model.*;
 import lady.dao.*;
-import lady.view.FormPengembalian;
+import lady.view.*;
 /**
  *
  * @author User
  */
 public class PengembalianController {
-    FormPengembalian formPengembalian;
     Pengembalian pengembalian;
     PengembalianDao pengembalianDao;
+    FormPengembalian formPengembalian;
+    
+    Peminjaman peminjaman;
     PeminjamanDao peminjamanDao;
+    FormPeminjaman formPeminjaman;
+    
     AnggotaDao anggotaDao;
     BukuDao bukuDao;
+    
     Connection connection;
     
     public PengembalianController(FormPengembalian formPengembalian) {
@@ -44,9 +49,9 @@ public class PengembalianController {
     
     public void clearForm(){
         formPengembalian.getTxtDenda().setText("");
-        formPengembalian.getTxtTerlamabt().setText("");
-        formPengembalian.getTxtTglDiKembalikan().setText("");
-        formPengembalian.getTxtTglPinjam().setText("");
+        formPengembalian.getTxtTerlambat().setText("");
+        formPengembalian.getTxttglDikembalikan().setText("");
+        formPengembalian.getTxttglPinjam().setText("");
     }
     
     public void isiComboAnggota(){
@@ -78,17 +83,45 @@ public class PengembalianController {
     public void insert(){
         try {
             pengembalian = new Pengembalian();
-            pengembalian.setKodeanggota(formPengembalian.getCboKodeAnggota()
-                    .getSelectedItem().toString().split("-")[0]);
-            pengembalian.setKodebuku(formPengembalian.getCboKodeBuku()
-                    .getSelectedItem().toString().split("-")[0]);
-            pengembalian.setTglpinjam(formPengembalian.getTxtTglPinjam().getText());
-            pengembalian.setTgldikembalikan(formPengembalian.getTxtTglDiKembalikan().getText());
+            pengembalian.setKodeanggota(formPengembalian.getCbokodeAnggota().getSelectedItem().toString().split("-")[0]);
+            pengembalian.setKodebuku(formPengembalian.getCbokodeBuku().getSelectedItem().toString().split("-")[0]);
+            pengembalian.setTglpinjam(formPengembalian.getTxttglPinjam().getText());
+            pengembalian.setTgldikembalikan(formPengembalian.getTxttglDikembalikan().getText());
             pengembalian.setTerlambat(Integer.parseInt(formPengembalian
                     .getTxtTerlambat().getText()));
             pengembalian.setDenda(Double.parseDouble(formPengembalian.getTxtDenda().getText()));
             pengembalianDao.insert(pengembalian);
             JOptionPane.showMessageDialog(formPengembalian, "Pengembalian OK");
+        } catch (Exception ex) {
+            Logger.getLogger(PengembalianController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void update(){
+        try {
+            pengembalian.setKodeanggota(formPengembalian.getCbokodeAnggota().getSelectedItem().toString());
+            pengembalian.setKodebuku(formPengembalian.getCbokodeBuku().getSelectedItem().toString());
+            pengembalian.setTglpinjam(formPengembalian.getTxttglPinjam().getText());
+            pengembalian.setTgldikembalikan(formPengembalian.getTxttglDikembalikan().getText());
+            pengembalian.setTerlambat(Integer.parseInt(formPengembalian.getTxtTerlambat().getText()));
+            pengembalian.setDenda(Double.parseDouble(formPengembalian.getTxtDenda().getText()));
+            pengembalianDao.update(pengembalian);
+            JOptionPane.showMessageDialog(formPengembalian, "Data Pengembalian telah dirubah!", null, 2);
+        } catch (Exception ex) {
+            Logger.getLogger(PengembalianController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void delete(){
+        try {
+            pengembalian.setKodeanggota(formPengembalian.getTabelPengembalian().getValueAt(formPengembalian.getTabelPengembalian().getSelectedRow(), 0)
+                    .toString());
+            pengembalian.setKodebuku(formPengembalian.getTabelPengembalian().getValueAt(formPengembalian.getTabelPengembalian().getSelectedRow(), 2)
+                    .toString());
+            pengembalian.setTglpinjam(formPengembalian.getTabelPengembalian().getValueAt(formPengembalian.getTabelPengembalian().getSelectedRow(), 4)
+                    .toString());
+            pengembalianDao.delete(pengembalian);
+            JOptionPane.showMessageDialog(formPengembalian, "Data Pengembalian berhasil dihapus!", null, 2);
         } catch (Exception ex) {
             Logger.getLogger(PengembalianController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -116,8 +149,8 @@ public class PengembalianController {
             formPengembalian.getCbokodeBuku()
                     .setSelectedItem(buku.getKodebuku()+"-"+buku.getJudulbuku());
             
-            formPengembalian.getTxtTglPinjam().setText(peminjaman.getTglpinjam());
-            formPengembalian.getTxtTglDiKembalikan().setText(pengembalian.getTgldikembalikan());
+            formPengembalian.getTxttglPinjam().setText(peminjaman.getTglpinjam());
+            formPengembalian.getTxttglDikembalikan().setText(pengembalian.getTgldikembalikan());
             int terlambat = pengembalianDao
                     .selisihTgl(pengembalian.getTgldikembalikan(), peminjaman.getTglkembali());
             pengembalian.setTerlambat(terlambat);
@@ -128,6 +161,46 @@ public class PengembalianController {
         }
     }
     
+        public void cari() {
+        try {
+            String kode = formPengembalian.getCboCari().getSelectedItem().toString();
+            String cari = formPengembalian.getTxtCari().getText();
+            DefaultTableModel tableModel = (DefaultTableModel) formPengembalian.getTabelPengembalian().getModel();
+            tableModel.setRowCount(0);
+            if (kode == "Kode Anggota") {
+                kode = "anggota.kodeAnggota";
+            } else if (kode == "Kode Buku") {
+                kode = "daftarBuku.kodeBuku";
+            } else {
+                kode = "anggota.namaAnggota";
+            }
+            List<Pengembalian> List = pengembalianDao.cari(kode, cari);
+            if (List.isEmpty()) {
+                if (kode == "anggota.kodeAnggota") {
+                    JOptionPane.showMessageDialog(formPengembalian, "Kode Anggota '" + cari + "' Tidak dapat ditemukan");
+                } else if (kode == "daftarBuku.kodeBuku") {
+                    JOptionPane.showMessageDialog(formPengembalian, "Kode Buku '" + cari + "' Tidak dapat ditemukan");
+                } else {
+                    JOptionPane.showMessageDialog(formPengembalian, "Nama '" + cari + "' Tidak dapat ditemukan");
+                }
+            } else {
+                for (Pengembalian pm : List) {
+                    Object[] data = {
+                            pm.getKodeanggota(),
+                            pm.getKodebuku(),
+                            pm.getTglpinjam(),
+                            pm.getTgldikembalikan(),
+                            pm.getTerlambat(),
+                            pm.getDenda()
+                    };
+                    tableModel.addRow(data);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(formPengembalian, e, null, 0);
+        }
+    }
+        
     public void tampil(){
         try {
             DefaultTableModel tabelModel =

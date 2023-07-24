@@ -14,6 +14,15 @@ public class People {
     protected String alamat;
     protected String statusNikah;
     
+    public People(){
+    }
+    
+    public People(String nama, String alamat, String statusNikah){
+        this.nama = nama;
+        this.alamat = alamat;
+        this.statusNikah = statusNikah;
+    }
+    
     public String getNama(){
         return nama;
     }
